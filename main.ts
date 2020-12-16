@@ -1,11 +1,8 @@
 basic.forever(function () {
     maqueen.writeLED(maqueen.LEDswitch.turnOn, maqueen.LED.LEDLeft)
     maqueen.writeLED(maqueen.LEDswitch.turnOff, maqueen.LED.LEDRight)
-    music.playTone(392, music.beat(BeatFraction.Half))
-    basic.pause(100)
     maqueen.writeLED(maqueen.LEDswitch.turnOff, maqueen.LED.LEDLeft)
     maqueen.writeLED(maqueen.LEDswitch.turnOn, maqueen.LED.LEDRight)
-    music.playTone(330, music.beat(BeatFraction.Half))
     basic.pause(100)
 })
 basic.forever(function () {
@@ -50,8 +47,15 @@ basic.forever(function () {
     }
     if (maqueen.Ultrasonic(PingUnit.Centimeters) < 15) {
         while (maqueen.Ultrasonic(PingUnit.Centimeters) < 20) {
-            maqueen.motorStop(maqueen.Motors.All)
-            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
+            basic.pause(1000)
+            maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 255)
+            basic.pause(1000)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 255)
+            basic.pause(1000)
+            maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 255)
+            basic.pause(2000)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 255)
         }
     }
 })
